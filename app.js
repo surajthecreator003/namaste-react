@@ -1,12 +1,15 @@
-import React from "react";
+// import React from "react";
 import ReactDOM from "react-dom/client";
-const heading=React.createElement("div",{id:"id1"},[React.createElement("h1",{id:"id2"},"Hello World from React"),React.createElement("h1",{id:"id3"},"Hello World from React")]);
-console.log(heading);
 
+// const newLocal = "Namaste React ";
+// const heading=React.createElement("h1",{class:"clr"},["helllllo Mfers"]);
+
+// console.log(heading);
+
+// const root=ReactDOM.createRoot(document.getElementById("root"));
+// root.render(heading);
+
+const headingjsx=<h2 class="clr">Hellllo</h2>;
+console.log(headingjsx);
 const root=ReactDOM.createRoot(document.getElementById("root"));
-root.render(heading);
-var a=5;
-
-
-
-
+root.render(headingjsx);
