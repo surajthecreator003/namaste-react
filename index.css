@@ -1,3 +1,51 @@
-.clr {
-    color:red;
+.header {
+    display:flex;
+    justify-content:space-around;
+    border:1px solid black
+}
+.logo{
+    width:200px;
+}
+.Navitems{
+padding: 0px 20px;
+}
+.Navitems > ul{
+    font-size:24px;
+    display:flex;
+    list-style-type:none;
+
+}
+.Navitems > ul > li {
+    padding : 10px;
+    margin:10px;
+    
+}
+.RestaurantConatainer{
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction: :row;
+}
+.RestaurantCard {
+    padding:5px;
+    width:200px;
+    height:300px;
+    border:1px solid black;
+    margin:5px
+}
+.RestaurantCard:hover {
+    padding:5px;
+    width:200px;
+    height:300px;
+    border:2px solid blue;
+    cursor:pointer;
+}
+
+.SearchBar{
+    padding:10px;
+
+}
+.restaurantlogo{
+    width:190px;
+    padding:5px;
+    
 }
