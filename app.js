@@ -48,7 +48,7 @@ const Header=()=>{
         <div className="header">
 
             
-            <div classname="logocontainer">
+            <div className="logocontainer">
                 <img className="logo" src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png" />
             </div>
 
@@ -66,13 +66,15 @@ const Header=()=>{
     )
 }
 
-const RestaurantCard=()=>{
+const RestaurantCard=(props)=>{
+    const {resname,cuisine}=props
+    console.log(resname);
     return(
         <div style={{backgroundColor:"#f0f0f0"}} className="RestaurantCard">
            
            <img  className="restaurantlogo" src="https://b.zmtcdn.com/data/pictures/5/20637085/bae67f22a9acee3cdc5ce73b2fbdc373_o2_featured_v2.jpg?output-format=webp" />
-           <h3>Hali mane Batuta</h3>
-           <h4>Lacha Parathan</h4>
+           <h3>{resname}</h3>
+           <h4>{cuisine}</h4>
            <h4>4.5</h4>
            <h4>38 mins</h4>
         </div>
@@ -86,16 +88,9 @@ const Body=()=>{
                 Search
             </div>
             <div className="RestaurantConatainer">
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
-                <RestaurantCard/>
+                <RestaurantCard resname="Halimanebadoota" cuisine="southindian"   />
+                <RestaurantCard resname="Garden" cuisine="Northindian"/>
+                
             </div>
 
         </div>
@@ -104,12 +99,14 @@ const Body=()=>{
 
 const Applayout=()=>{// TOP LEVEL COMPONENT
     return (
-    <div className="app">
+    <div  className="app">
         <Header/>
         <Body/>
     </div>//APP LEVEL DIV 
 
 )
     }
+
+    
 
 root.render(<Applayout />);

@@ -1,3 +1,4 @@
+
 .header {
     display:flex;
     justify-content:space-around;
@@ -28,7 +29,7 @@ padding: 0px 20px;
 .RestaurantCard {
     padding:5px;
     width:200px;
-    height:300px;
+    height:350px;
     border:1px solid black;
     margin:5px
 }
