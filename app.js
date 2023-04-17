@@ -2311,8 +2311,9 @@ const reslist=[
       },
       "subtype": "basic"
     }
-  ]
-  ;
+  ];
+
+
 
 const Header=()=>{
     return(
@@ -2338,19 +2339,22 @@ const Header=()=>{
 }
 
 const RestaurantCard=(props)=>{
-    const {resdata}=props
+    const {resdata}=props;
+    console.log(props);
     console.log(resdata);
+
+    const{cloudinaryImageId,name,avgRating,cuisines,costForTwo,deliveryTime}=resdata?.data;
+
     return(
         <div style={{backgroundColor:"#f0f0f0"}} className="RestaurantCard">
            
-           <img  className="restaurantlogo" src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"+ resdata.data.cloudinaryImageId} />
-           <h3>{resdata.data.name}</h3>
-           <h4>{resdata.data.cuisines.join(",")}</h4>
-           <h4>{resdata.data.avgRating} stars</h4>
-           <h4>Rs.{resdata.data.costForTwo/100}</h4>
-           <h4>{resdata.data.deliveryTime} minutes</h4>
-           <h4>4.5</h4>
-           <h4>38 mins</h4>
+           <img  className="restaurantlogo" src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"+ cloudinaryImageId} />
+           <h3>{name}</h3>
+           <h4>{cuisines.join(",")}</h4>
+           <h4>{avgRating} stars</h4>
+           <h4>Rs.{costForTwo/100}</h4>
+           <h4>{deliveryTime} minutes</h4>
+           
         </div>
     )
 }
@@ -2362,18 +2366,9 @@ const Body=()=>{
                 Search
             </div>
             <div className="RestaurantConatainer">
-                <RestaurantCard resdata={reslist[0]} />
-                <RestaurantCard resdata={reslist[1]} />
-                <RestaurantCard resdata={reslist[2]} />
-                <RestaurantCard resdata={reslist[3]} />
-                <RestaurantCard resdata={reslist[4]} />
-                <RestaurantCard resdata={reslist[5]} />
-                <RestaurantCard resdata={reslist[6]} />
-                <RestaurantCard resdata={reslist[7]} />
-                <RestaurantCard resdata={reslist[8]} />
-                <RestaurantCard resdata={reslist[9]} />
-                <RestaurantCard resdata={reslist[10]} />
-                <RestaurantCard resdata={reslist[11]} />
+                {
+                reslist.map(restaurant => <RestaurantCard key ={restaurant.data.id} resdata={restaurant}/>)
+                }
                 
                 
             </div>
