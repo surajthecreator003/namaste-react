@@ -44,12 +44,14 @@
 // console.log(o1);
 
 
-const a=5;
+// export const a;
 
 
 
-// module.exports=5;
-// module.exports={a:2,b:3};
+
 // console.log(module);
-exports default 6;
-console.log(module);
+
+function hi(){ console.log('Hi') }
+export default hi;
+
+

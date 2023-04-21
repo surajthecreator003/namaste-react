@@ -24,7 +24,7 @@ padding: 0px 20px;
 .RestaurantConatainer{
     display:flex;
     flex-wrap:wrap;
-    flex-direction: :row;
+    flex-direction:row;
 }
 .RestaurantCard {
     padding:5px;
@@ -36,7 +36,7 @@ padding: 0px 20px;
 .RestaurantCard:hover {
     padding:5px;
     width:200px;
-    height:300px;
+    /* height:300px; */
     border:2px solid blue;
     cursor:pointer;
 }
@@ -49,4 +49,8 @@ padding: 0px 20px;
     width:190px;
     padding:5px;
     
+}
+.filter-btn{
+    margin:10px;
+    cursor:pointer;
 }
