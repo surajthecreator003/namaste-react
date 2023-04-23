@@ -2,11 +2,11 @@ import {CDN_URL} from "../utils/config";
 
 const RestaurantCard=(props)=>{
     const {resdata}=props;
-    // console.log(props);
+    console.log("resentered");
     // console.log(resdata);
 
     const{cloudinaryImageId,name,avgRating,cuisines,costForTwo,deliveryTime}=resdata?.data;
-
+    
     return(
         <div style={{backgroundColor:"#f0f0f0"}} className="RestaurantCard">
            

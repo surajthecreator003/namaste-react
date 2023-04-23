@@ -13,7 +13,7 @@ const stylecard={color:"#f0f0f0",};
 
 
 const Applayout=()=>{// TOP LEVEL COMPONENT
-    console.log(<Body/>)
+   
     return (
     <div  className="app">
         <Header/>

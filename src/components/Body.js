@@ -7,6 +7,7 @@ import { useState } from "react";
 
 
 const Body=()=>{
+  console.log("body printed");
 let listOfRestaurantscommonJS=[{
     "data": {   
       "id": "240179",
@@ -65,7 +66,18 @@ let listOfRestaurantscommonJS=[{
 },
     ];
 
-let [listOfRestaurants,setListOfRestaurants]=useState(reslist);
+
+function filterData(searchText, restaurants) {
+      const filterData = restaurants.filter((restaurant) =>
+        restaurant.data.name.includes(searchText)
+      );
+    
+      return filterData;
+    }
+
+const [listOfRestaurants,setListOfRestaurants]=useState(reslist);
+const [searchText,setSearchText]=useState("");
+
     return(
         <div className="Body">
             <div className="Filter">
@@ -78,7 +90,30 @@ let [listOfRestaurants,setListOfRestaurants]=useState(reslist);
                 //    console.log(listOfRestaurants);
                 }}>Top Rated Restaurant </ button>
 
+                
+
             </div>
+            
+            <div className="search-container">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search"
+              value={searchText}
+              onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+            />
+            <button className="search-input" onClick={()=>{//serch Logic Inside Button Working
+              // const data=filterData(searchText,listOfRestaurants);//If you wanaa use outer function to filter data
+              const data=listOfRestaurants.filter((x)=>{return x.data.name.includes(searchText)})
+              setListOfRestaurants(data);
+            }
+            }>
+             Search
+            </button>
+            </div>
+
             <div className="RestaurantConatainer">
                 {
                 listOfRestaurants.map(restaurant => <RestaurantCard key ={restaurant.data.id} resdata={restaurant}/>)
