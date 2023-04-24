@@ -2,7 +2,7 @@ import {CDN_URL} from "../utils/config";
 
 const RestaurantCard=(props)=>{
     const {resdata}=props;
-    console.log("resentered");
+    // console.log("resetaurant card entered");
     // console.log(resdata);
 
     const{cloudinaryImageId,name,avgRating,cuisines,costForTwo,deliveryTime}=resdata?.data;

@@ -2,12 +2,12 @@ import RestaurantCard from "./RestaurantCads";
 
 import reslist from "../utils/mockdata";
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 
 
 const Body=()=>{
-  console.log("body printed");
+  // console.log("body printed");
 let listOfRestaurantscommonJS=[{
     "data": {   
       "id": "240179",
@@ -67,16 +67,27 @@ let listOfRestaurantscommonJS=[{
     ];
 
 
-function filterData(searchText, restaurants) {
-      const filterData = restaurants.filter((restaurant) =>
-        restaurant.data.name.includes(searchText)
-      );
+// function filterData(searchText, restaurants) {
+//       const filterData = restaurants.filter((restaurant) =>
+//         restaurant.data.name.includes(searchText)
+//       );
     
-      return filterData;
-    }
+//       return filterData;
+//     }
 
 const [listOfRestaurants,setListOfRestaurants]=useState(reslist);
 const [searchText,setSearchText]=useState("");
+useEffect(()=>{getRestaurants()},[]);
+
+async function getRestaurants(){
+const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.259728683745337&lng=84.87002279609442&page_type=DESKTOP_WEB_LISTING");//put swiggy api link here
+const jsondata=await data.json();
+console.log("useeffect entered");
+// console.log(data);
+setListOfRestaurants(jsondata.data.cards[2].data.data.cards);
+}
+
+console.log("render");
 
     return(
         <div className="Body">
