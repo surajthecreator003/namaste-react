@@ -2,7 +2,11 @@ import RestaurantCard from "./RestaurantCads";
 
 import reslist from "../utils/mockdata";
 
+import reslist2 from "../utils/fakemockdata";
+
 import { useState,useEffect } from "react";
+
+import Shimmer from "./ShimmerUI";
 
 
 
@@ -75,22 +79,23 @@ let listOfRestaurantscommonJS=[{
 //       return filterData;
 //     }
 
-const [listOfRestaurants,setListOfRestaurants]=useState(reslist);
+const [listOfRestaurants,setListOfRestaurants]=useState([]);
 const [searchText,setSearchText]=useState("");
 useEffect(()=>{getRestaurants()},[]);
 
 async function getRestaurants(){
-const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.259728683745337&lng=84.87002279609442&page_type=DESKTOP_WEB_LISTING");//put swiggy api link here
-const jsondata=await data.json();
-console.log("useeffect entered");
-// console.log(data);
-setListOfRestaurants(jsondata.data.cards[2].data.data.cards);
+       const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.259728683745337&lng=84.87002279609442&page_type=DESKTOP_WEB_LISTING");//put swiggy api link here
+       const jsondata = await data.json();
+       console.log("useeffect entered");
+      //console.log(data);
+       setListOfRestaurants(jsondata.data.cards[2].data.data.cards);
 }
 
 console.log("render");
-
-    return(
+   
+return (listOfRestaurants.length===0)?(<Shimmer />):(
         <div className="Body">
+          
             <div className="Filter">
                 <button className="filter-btn" onClick={()=>{
 
@@ -132,6 +137,7 @@ console.log("render");
                 
                 
             </div>
+            
 
         </div>
     )
