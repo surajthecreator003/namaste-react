@@ -2,7 +2,7 @@ import RestaurantCard from "./RestaurantCads";
 
 import reslist from "../utils/mockdata";
 
-import reslist2 from "../utils/fakemockdata";
+// import reslist2 from "../utils/fakemockdata";
 
 import { useState,useEffect } from "react";
 
@@ -79,38 +79,55 @@ let listOfRestaurantscommonJS=[{
 //       return filterData;
 //     }
 
-const [listOfRestaurants,setListOfRestaurants]=useState([]);
-const [searchText,setSearchText]=useState("");
+
+
+
+const [allRestaurants,setAllRestaurants]=useState([]);//list of restaurants data
+const [filteredRestaurants,setFilteredRestaurants]=useState([]);//filtered restaurant data 
+const [searchText,setSearchText]=useState("");//for search text
+
+
+
 useEffect(()=>{getRestaurants()},[]);
+
+
 
 async function getRestaurants(){
        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.259728683745337&lng=84.87002279609442&page_type=DESKTOP_WEB_LISTING");//put swiggy api link here
        const jsondata = await data.json();
        console.log("useeffect entered");
       //console.log(data);
-       setListOfRestaurants(jsondata.data.cards[2].data.data.cards);
+       setAllRestaurants(jsondata.data.cards[2].data.data.cards);
+       setFilteredRestaurants(jsondata.data.cards[2].data.data.cards);
+       
 }
 
-console.log("render");
+
+
+console.log("Body Entered");
+// console.log(allRestaurants);
+// console.log(filteredRestaurants);
+
+
    
-return (listOfRestaurants.length===0)?(<Shimmer />):(
+return (filteredRestaurants.length===0)?(<Shimmer />):(
+       
+
+        //TOP RESTAURANT BUTTON  
         <div className="Body">
           
             <div className="Filter">
                 <button className="filter-btn" onClick={()=>{
 
-                    let filterList=listOfRestaurants.filter((x)=>{return x.data.avgRating>4.2});
-                    setListOfRestaurants(filterList);
-                    
-                //    listOfRestaurants= listOfRestaurants.filter((x)=>{return x.data.avgRating>4});
-                //    console.log(listOfRestaurants);
+                    let filterList=filteredRestaurants.filter((x)=>{return x.data.avgRating>4});
+                    setFilteredRestaurants(filterList);
                 }}>Top Rated Restaurant </ button>
-
-                
-
             </div>
+
+
+
             
-            <div className="search-container">
+            <div className="search-container" >
             <input
               type="text"
               className="search-input"
@@ -120,23 +137,26 @@ return (listOfRestaurants.length===0)?(<Shimmer />):(
               setSearchText(e.target.value);
             }}
             />
+
+
             <button className="search-input" onClick={()=>{//serch Logic Inside Button Working
               // const data=filterData(searchText,listOfRestaurants);//If you wanaa use outer function to filter data
-              const data=listOfRestaurants.filter((x)=>{return x.data.name.includes(searchText)})
-              setListOfRestaurants(data);
+              const data=allRestaurants.filter((x)=>{return x.data.name.includes(searchText)})
+              setFilteredRestaurants(data);
             }
             }>
              Search
             </button>
             </div>
 
+
+
             <div className="RestaurantConatainer">
                 {
-                listOfRestaurants.map(restaurant => <RestaurantCard key ={restaurant.data.id} resdata={restaurant}/>)
+                filteredRestaurants.map(restaurant => <RestaurantCard key ={restaurant.data.id} resdata={restaurant}/>)
                 }
-                
-                
             </div>
+
             
 
         </div>
