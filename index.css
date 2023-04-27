@@ -54,3 +54,15 @@ padding: 0px 20px;
     margin:10px;
     cursor:pointer;
 }
+
+.restaurant-list{
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+}
+.shimmer-card{
+width:200px;
+height:200px;
+background-color:lightgray;
+margin:20px;
+}

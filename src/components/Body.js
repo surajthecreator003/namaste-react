@@ -88,7 +88,7 @@ const [searchText,setSearchText]=useState("");//for search text
 
 
 
-useEffect(()=>{getRestaurants()},[]);
+useEffect(()=>{getRestaurants();console.log("use effect of body called")},[]);
 
 
 
@@ -109,9 +109,9 @@ console.log("Body Entered");
 // console.log(filteredRestaurants);
 
 //Early Exit Code
-if(filteredRestaurants.length===0){
-  return <h1>No Restaurants Found</h1>
-}
+// if(filteredRestaurants.length===0){
+//   return <h1>No Restaurants Found</h1>
+// }
 
 
    

@@ -1,5 +1,5 @@
 import {LOGO_URL} from "../utils/config";
-import  { useState } from "react";
+import  { useState,useEffect } from "react";
 
 
 //Dummy Login Button Code Working
@@ -10,6 +10,8 @@ import  { useState } from "react";
 
 const Header=()=>{
     const [isLogStatus,setIsLogStatus]=useState(true);
+
+    useEffect(()=>{console.log("use effect of Header called")},[])
 
     return(
         <div className="header">
