@@ -97,8 +97,8 @@ async function getRestaurants(){
        const jsondata = await data.json();
        console.log("useeffect entered");
       //console.log(data);
-       setAllRestaurants(jsondata.data.cards[2].data.data.cards);
-       setFilteredRestaurants(jsondata.data.cards[2].data.data.cards);
+       setAllRestaurants(jsondata.data.cards[0].data.data.cards);
+       setFilteredRestaurants(jsondata.data.cards[0].data.data.cards);
        
 }
 
