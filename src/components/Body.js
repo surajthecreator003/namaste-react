@@ -108,6 +108,11 @@ console.log("Body Entered");
 // console.log(allRestaurants);
 // console.log(filteredRestaurants);
 
+//Early Exit Code
+if(filteredRestaurants.length===0){
+  return <h1>No Restaurants Found</h1>
+}
+
 
    
 return (filteredRestaurants.length===0)?(<Shimmer />):(
@@ -141,7 +146,7 @@ return (filteredRestaurants.length===0)?(<Shimmer />):(
 
             <button className="search-input" onClick={()=>{//serch Logic Inside Button Working
               // const data=filterData(searchText,listOfRestaurants);//If you wanaa use outer function to filter data
-              const data=allRestaurants.filter((x)=>{return x.data.name.includes(searchText)})
+              const data=allRestaurants.filter((x)=>{return x.data.name.toLowerCase().includes(searchText.toLowerCase())})
               setFilteredRestaurants(data);
             }
             }>

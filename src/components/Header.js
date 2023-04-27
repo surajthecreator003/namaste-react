@@ -1,6 +1,16 @@
 import {LOGO_URL} from "../utils/config";
+import  { useState } from "react";
+
+
+//Dummy Login Button Code Working
+// const authenticateUser=()=>{return false;}
+//{(authenticateUser())?(<button>Log In</button>):(<button>Log Out</button>)} 
+
+
 
 const Header=()=>{
+    const [isLogStatus,setIsLogStatus]=useState(true);
+
     return(
         <div className="header">
 
@@ -19,6 +29,13 @@ const Header=()=>{
                 </ul>
             </div>
 
+            
+            {
+               isLogStatus? <button onClick={()=>{setIsLogStatus(false)}}>Loggd In</button> : <button onClick={()=>{setIsLogStatus(true)}}>Log Out</button>
+            }
+                
+            
+            
         </div>
     )
 }
