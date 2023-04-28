@@ -1,12 +1,20 @@
 import {LOGO_URL} from "../utils/config";
 import  { useState,useEffect } from "react";
+import {Link} from "react-router-dom";
 
 
 //Dummy Login Button Code Working
 // const authenticateUser=()=>{return false;}
 //{(authenticateUser())?(<button>Log In</button>):(<button>Log Out</button>)} 
 
-
+const Title=()=>{
+    return( 
+    <a href ="/" className="logocontainer">
+                <img className="logo" alt="logo" src={LOGO_URL} />
+            </a>
+            )
+    
+}
 
 const Header=()=>{
     const [isLogStatus,setIsLogStatus]=useState(true);
@@ -16,19 +24,18 @@ const Header=()=>{
     return(
         <div className="header">
 
+            <Title />
             
-            <div className="logocontainer">
-                <img className="logo" src={LOGO_URL} />
-            </div>
 
 
             <div className="Navitems">
                 <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact us</li>
-                    <li>Cart</li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/About">About</Link></li>
+                <li><Link to="/Contact">ContactUs</Link></li>
+                <li><Link to="/Cart">Cart</Link></li>
                 </ul>
+                
             </div>
 
             
