@@ -93,7 +93,7 @@ useEffect(()=>{getRestaurants();console.log("use effect of body called")},[]);
 
 
 async function getRestaurants(){
-       const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.259728683745337&lng=84.87002279609442&page_type=DESKTOP_WEB_LISTING");//put swiggy api link here
+       const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9122238&lng=77.5923219&page_type=DESKTOP_WEB_LISTING");//put swiggy api link here
        const jsondata = await data.json();
        console.log("useeffect entered");
       //console.log(data);
@@ -118,13 +118,13 @@ console.log("Body Entered");
 return (filteredRestaurants.length===0)?(<Shimmer />):(
        
 
-        //TOP RESTAURANT BUTTON  
+        
         <div className="Body">
           
             <div className="Filter">
                 <button className="filter-btn" onClick={()=>{
 
-                    let filterList=filteredRestaurants.filter((x)=>{return x.data.avgRating>4});
+                    let filterList=allRestaurants.filter((x)=>{return x.data.avgRating>4});
                     setFilteredRestaurants(filterList);
                 }}>Top Rated Restaurant </ button>
             </div>

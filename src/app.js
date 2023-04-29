@@ -9,7 +9,8 @@ import Body from "./components/Body";
 import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
+import RestaurantsMenu from "./components/RestaurantsMenu";
 
 
 
@@ -46,12 +47,16 @@ const approuter=createBrowserRouter([
             element:<Contact />,
             errorElement:<Error/>,
 },{
-    path:"/",
-    element:<Body />,
-    errorElement:<Error/>,
-}],
+            path:"/",
+            element:<Body />,
+            errorElement:<Error/>,
+},{
+            path:"/restaurant/:id",
+            element:<RestaurantsMenu/>,
+            errorElement: <Error/> ,
+},],
 },
-{
+{       
         path:"/about",
         element:<About />,
         errorElement:<Error/>,
