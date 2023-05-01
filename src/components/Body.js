@@ -8,6 +8,7 @@ import { useState,useEffect } from "react";
 
 import Shimmer from "./ShimmerUI";
 
+import {Link} from "react-router-dom";
 
 
 const Body=()=>{
@@ -96,7 +97,7 @@ async function getRestaurants(){
        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9122238&lng=77.5923219&page_type=DESKTOP_WEB_LISTING");//put swiggy api link here
        const jsondata = await data.json();
        console.log("useeffect entered");
-      //console.log(data);
+       //console.log(data);
        setAllRestaurants(jsondata.data.cards[2].data.data.cards);
        setFilteredRestaurants(jsondata.data.cards[2].data.data.cards);
        
@@ -106,7 +107,7 @@ async function getRestaurants(){
 
 console.log("Body Entered");
 // console.log(allRestaurants);
-// console.log(filteredRestaurants);
+console.log(filteredRestaurants);
 
 //Early Exit Code
 // if(filteredRestaurants.length===0){
@@ -158,7 +159,7 @@ return (filteredRestaurants.length===0)?(<Shimmer />):(
 
             <div className="RestaurantConatainer">
                 {
-                filteredRestaurants.map(restaurant => <RestaurantCard key ={restaurant.data.id} resdata={restaurant}/>)
+                filteredRestaurants.map(restaurant => <Link to={"/restaurant/"+restaurant.data.id} key={restaurant.data.id}> <RestaurantCard key ={restaurant.data.id} resdata={restaurant}/> </Link>)
                 }
             </div>
 

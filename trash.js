@@ -51,7 +51,7 @@
 
 // console.log(module);
 
-function hi(){ console.log('Hi') }
-export default hi;
 
+const a=undefined;
+console.log(a.l);
 
