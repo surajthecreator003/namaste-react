@@ -11,54 +11,54 @@ const RestaurantsMenu=()=>{
     
     const {id}=useParams();
     
-    
-    
     const [restaurantMenu,setRestaurantMenu]=useState({});
     const [restaurantMenuItems,setRestaurantMenuItems]=useState([]);
+    
+    
     
     
 
 
     async function getRestaurantsInfo(){
         const data=await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9122238&lng=77.5923219&restaurantId="+id);
-        const jsondata=await data.json();
+        const jsondata= await data.json();
 
         
         
         
-        // //Main Logic To destructure Swiggy Menu Items Data
-        // const menuArray=  jsondata.data.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-        // const moveInsideMenuArray=  menuArray?.map((x)=>{return x?.card?.card?.itemCards});
+        //Main Logic To destructure Swiggy Menu Items Data
+        const menuArray=   await jsondata?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+        const moveInsideMenuArray=  await menuArray?.map((x)=>{return x?.card?.card?.itemCards});
 
+       
+        const storingMenu=[];
+        for(let i=0;i<moveInsideMenuArray.length;i++){
+                    if(moveInsideMenuArray[i]){
+                         for(let j=0;j<moveInsideMenuArray[i].length;j++){
+                                if(moveInsideMenuArray[i][j]){
+                                     storingMenu.push(moveInsideMenuArray[i][j]);
+                                }
+                                else{
+                                 continue;
+                                }
+                        }
+                    }  
+                    else{
+                        continue;
+                    }      
+                }
 
-        // const storingMenu=[];
-        // for (let i=0;i<moveInsideMenuArray.length;i++){
-        //             if(moveInsideMenuArray[i]){
-        //                  for(let j=0;j<moveInsideMenuArray[i].length;j++){
-        //                         if(moveInsideMenuArray[i][j]){
-        //                              storingMenu.push(moveInsideMenuArray[i][j]);
-        //                         }
-        //                         else{
-        //                          continue;
-        //                         }
-        //                 }
-        //             }  
-        //             else{
-        //                 continue;
-        //             }      
-        //         }
-
-        // console.log(menuArray);
-        // console.log(moveInsideMenuArray);
-        // console.log(storingMenu);
+        console.log(menuArray);
+        console.log(moveInsideMenuArray);
+        console.log(storingMenu);
 
 
         setRestaurantMenu(jsondata?.data?.cards[0].card?.card?.info);
-        // setRestaurantMenuItems(storingMenu);
+        setRestaurantMenuItems(storingMenu);
         
     }
 
-
+    
    
     
 
@@ -67,7 +67,9 @@ const RestaurantsMenu=()=>{
         },[]);
 
 
-    if(restaurantMenu.length===0){return <Shimmer/> }    
+    
+
+    if(restaurantMenuItems.length===0){return <Shimmer/> }    
 
     return (<div className="Menu">
 
@@ -84,7 +86,7 @@ const RestaurantsMenu=()=>{
         <div>
             <h1>Menu :</h1> 
             <ul>
-            {/* {restaurantMenuItems.map((x,index) => <li key={index}>{x?.card?.info?.name} Price-Rs.{x?.card?.info?.price/100}</li>)}  */}
+            {restaurantMenuItems.map((x,index) => <li key={index}>{x?.card?.info?.name} Price-Rs.{x?.card?.info?.price/100}</li>)} 
             </ul>
                 
             
