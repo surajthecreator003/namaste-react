@@ -3,7 +3,7 @@ const swiggyRourkelaLink="https://www.swiggy.com/dapi/restaurants/list/v5?lat=22
 
 
 //away swiggy link for all restaurants
-const swiggyBengaluruLink="https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9122238&lng=77.5923219&page_type=DESKTOP_WEB_LISTING";
+const swiggyBengaloreRestaurantLink="https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9122238&lng=77.5923219&page_type=DESKTOP_WEB_LISTING";
 
 
 

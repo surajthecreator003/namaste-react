@@ -96,7 +96,7 @@ useEffect(()=>{getRestaurants();console.log("use effect of body called")},[]);
 async function getRestaurants(){
        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9122238&lng=77.5923219&page_type=DESKTOP_WEB_LISTING");//put swiggy api link here
        const jsondata = await data.json();
-       console.log("useeffect entered");
+       
        //console.log(data);
        setAllRestaurants(jsondata.data.cards[2].data.data.cards);
        setFilteredRestaurants(jsondata.data.cards[2].data.data.cards);

@@ -12,6 +12,8 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import RestaurantsMenu from "./components/RestaurantsMenu";
 import Cart from "./components/Cart";
+import ProfileFunctionalComponent from "./components/ProfileFunctionalComponent";
+
 
 
 
@@ -43,6 +45,12 @@ const approuter=createBrowserRouter([
             path:"/about",
             element:<About />,
             errorElement:<Error/>,
+            children:[{
+                path:"profile",
+                element:<ProfileFunctionalComponent />,
+                errorElement:<Error/>,
+            },
+            ]
     },{
             path:"/contact",
             element:<Contact />,

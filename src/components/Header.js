@@ -19,7 +19,7 @@ const Title=()=>{
 const Header=()=>{
     const [isLogStatus,setIsLogStatus]=useState(true);
 
-    useEffect(()=>{console.log("use effect of Header called")},[])
+    // useEffect(()=>{console.log("use effect of Header called")},[])
 
     return(
         <div className="header">
