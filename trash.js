@@ -52,6 +52,7 @@
 // console.log(module);
 
 
-const a=undefined;
-console.log(a.l);
+const a={a1:3,a2:"gfg",a3:676}
+const b=Object.values(a);
+console.log(b);
 

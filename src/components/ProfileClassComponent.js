@@ -6,23 +6,39 @@ class ProfileClassComponent extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            count:0,
+            userInfo:{
+                name:"Dummy Name",
+                location:"Dummy Location",
+            }
         }
         console.log("Child Constructor Called");
     }
     
     render(){
         console.log("Child Render Called");
-        return <div><h1>Profile getting rendered inside Outlet of About ...using ClassBased Component</h1>
-                    <h1>Name:{this.props.name}</h1>
-                    <h1>Count: {this.state.count }</h1>
-                    <button onClick={()=>{this.setState({count:this.state.count+1})}}>Click for class based Count</button>
-                    
+        return <div>
+                    <h1>Name:{this.state.userInfo.name}</h1>
+                    <img src={this.state.userInfo.avatar_url} />
+                       
         </div>;
 
     }
-    componentDidMount(){
-        console.log(" Child Component did mount entered");
+    async componentDidMount(){
+        const data=await fetch("https://api.github.com/users/surajthecreator003");
+        const jsondata= await data.json();
+        console.log(jsondata);
+        this.setState({userInfo:jsondata})
+        console.log("Child Component did mount called");
+
+        this.timer=setInterval(()=>{console.log("oh yeah");},1000)
+    }
+    componentDidUpdate(){
+        console.log("Component did update of child");
+        
+    }
+    componentWillUnmount(){
+        clearInterval(this.timer);
+        console.log("Component will unmount of child");
     }
 
         }
