@@ -1,7 +1,7 @@
 import {LOGO_URL} from "../utils/config";
 import  { useState,useEffect } from "react";
 import {Link} from "react-router-dom";
-
+import useOnline from "../utils/useOnline";
 
 //Dummy Login Button Code Working
 // const authenticateUser=()=>{return false;}
@@ -13,6 +13,14 @@ const Title=()=>{
                 <img className="logo" alt="logo" src={LOGO_URL} />
             </a>
             )
+    
+}
+
+const Tick=()=>{
+   const value= useOnline();
+   if (value) {return <h1>❌</h1> }
+   
+   return <h1>✅</h1>
     
 }
 
@@ -37,6 +45,8 @@ const Header=()=>{
                 </ul>
                 
             </div>
+
+            <Tick />
 
             
             {

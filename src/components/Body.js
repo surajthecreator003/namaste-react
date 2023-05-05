@@ -10,6 +10,8 @@ import Shimmer from "./ShimmerUI";
 
 import {Link} from "react-router-dom";
 
+import useOnline from "../utils/useOnline";
+
 
 const Body=()=>{
   // console.log("body printed");
@@ -102,6 +104,14 @@ async function getRestaurants(){
        setFilteredRestaurants(jsondata.data.cards[2].data.data.cards);
        
 }
+
+const statusValue=useOnline();
+if(statusValue){
+  return <h1>🔴 You are Offline Please turn on your internet and try again</h1>
+}
+// else{
+//   return <h1>🟢You are Online</h1>
+// }
 
 
 
