@@ -6,20 +6,24 @@ import {Outlet} from "react-router-dom";
 
 import Header from "./components/Header";
 import Body from "./components/Body";
-import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import RestaurantsMenu from "./components/RestaurantsMenu";
 import Cart from "./components/Cart";
 import ProfileFunctionalComponent from "./components/ProfileFunctionalComponent";
+import {lazy} from "react";
+import {Suspense} from "react";
+import Shimmer from "./components/ShimmerUI";
 
 
 
 
 const root=ReactDOM.createRoot(document.getElementById("root"));
 
+const InstaMart=lazy(()=>{return import("./components/InstaMart")});
 
+const About=lazy(()=>{return import("./components/About")})
 
 const stylecard={color:"#f0f0f0",};
 
@@ -43,7 +47,7 @@ const approuter=createBrowserRouter([
         errorElement:<Error/>,
         children:[{
             path:"/about",
-            element:<About />,
+            element:<Suspense fallback={<Shimmer />}><About/></Suspense>,
             errorElement:<Error/>,
             children:[{
                 path:"profile",
@@ -68,11 +72,17 @@ const approuter=createBrowserRouter([
             path:"/Cart",
             element:<Cart/>,
             errorElement: <Error/> ,
-}],
+},
+{
+            path:"/Instamart",
+            element:<Suspense fallback={<Shimmer />}><InstaMart/></Suspense>,
+            errorElement: <Error/> ,
+}
+],
 },
 {       
         path:"/about",
-        element:<About />,
+        element:<Suspense fallback={<Shimmer />}><About/></Suspense>,
         errorElement:<Error/>,
 },
 ]

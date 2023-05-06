@@ -42,6 +42,7 @@ const Header=()=>{
                 <li><Link to="/About">About</Link></li>
                 <li><Link to="/Contact">ContactUs</Link></li>
                 <li><Link to="/Cart">Cart</Link></li>
+                <li><Link to="/Instamart">InstaMart</Link></li>
                 </ul>
                 
             </div>
