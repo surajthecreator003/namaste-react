@@ -132,8 +132,8 @@ return (filteredRestaurants.length===0)?(<Shimmer />):(
         
         <div className="Body">
           
-            <div className="Filter">
-                <button className="filter-btn" onClick={()=>{
+            <div className="p-5 bg-blue-50 ">
+                <button className="bg-pink" onClick={()=>{
 
                     let filterList=allRestaurants.filter((x)=>{return x.data.avgRating>4});
                     setFilteredRestaurants(filterList);
@@ -146,7 +146,7 @@ return (filteredRestaurants.length===0)?(<Shimmer />):(
             <div className="search-container" >
             <input
               type="text"
-              className="search-input"
+              className="focus:bg-green-200 p-2 m02"
               placeholder="Search"
               value={searchText}
               onChange={(e) => {
@@ -155,7 +155,7 @@ return (filteredRestaurants.length===0)?(<Shimmer />):(
             />
 
 
-            <button className="search-input" onClick={()=>{//serch Logic Inside Button Working
+            <button className="p-2 m-2 bg-purple-400 rounded-full hover:bg-green-500" onClick={()=>{//serch Logic Inside Button Working
               // const data=filterData(searchText,listOfRestaurants);//If you wanaa use outer function to filter data
               const data=allRestaurants.filter((x)=>{return x.data.name.toLowerCase().includes(searchText.toLowerCase())})
               setFilteredRestaurants(data);
@@ -167,7 +167,7 @@ return (filteredRestaurants.length===0)?(<Shimmer />):(
 
 
 
-            <div className="RestaurantConatainer">
+            <div className="flex flex-wrap">
                 {
                 filteredRestaurants.map(restaurant => <Link to={"/restaurant/"+restaurant.data.id} key={restaurant.data.id}> <RestaurantCard key ={restaurant.data.id} resdata={restaurant}/> </Link>)
                 }

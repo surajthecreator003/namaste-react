@@ -8,11 +8,11 @@ const RestaurantCard=(props)=>{
     const{cloudinaryImageId,name,avgRating,cuisines,costForTwo,deliveryTime}=resdata?.data;
     
     return(
-        <div style={{backgroundColor:"#f0f0f0"}} className="RestaurantCard">
+        <div className="w-56 p-2 m-2 shadow-lg bg-purple-50" >
            
            <img  className="restaurantlogo" src={CDN_URL+ cloudinaryImageId} />
-           <h3>{name}</h3>
-           <h4>{cuisines.join(",")}</h4>
+           <h3 className="font-bold text-2xl">{name}</h3>
+           <h4 className="overflow-auto">{cuisines.join(",")}</h4>
            <h4>{avgRating} stars</h4>
            <h4>Rs.{costForTwo/100}</h4>
            <h4>{deliveryTime} minutes</h4>
