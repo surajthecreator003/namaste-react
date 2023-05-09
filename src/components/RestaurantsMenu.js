@@ -22,9 +22,9 @@ const RestaurantsMenu=()=>{
 
     if( restaurantMenuItems.length===0 ){return <Shimmer/> }    
 
-    return (<div className="Menu">
+    return (<div className="flex flex-wrap bg-green-500">
 
-        <div>
+        <div >
             <h2>Restaurant Id : {restaurantMenu.id}</h2>
             <h1>{restaurantMenu.name}</h1>
             <img  src={CDN_URL+restaurantMenu.cloudinaryImageId}/>
@@ -34,8 +34,8 @@ const RestaurantsMenu=()=>{
             <h3>{restaurantMenu.costForTwoMessage}</h3>
         </div>
 
-        <div>
-            <h1>Menu :</h1> 
+        <div className="p-10">
+            <h1 className="underline font-bold text-2xl">Menu :</h1> 
             <ul>
             {restaurantMenuItems.map((x,index) => <li key={index}>{x?.card?.info?.name} Price-Rs.{x?.card?.info?.price/100}</li>)} 
             </ul>
