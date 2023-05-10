@@ -15,6 +15,7 @@ import ProfileFunctionalComponent from "./components/ProfileFunctionalComponent"
 import {lazy} from "react";
 import {Suspense} from "react";
 import Shimmer from "./components/ShimmerUI";
+import Testing from "./components/Testing";
 
 
 
@@ -77,6 +78,11 @@ const approuter=createBrowserRouter([
             path:"/Instamart",
             element:<Suspense fallback={<Shimmer />}><InstaMart/></Suspense>,
             errorElement: <Error/> ,
+},
+{       
+    path:"/testing",
+    element:<Suspense fallback={<Shimmer />}><Testing/></Suspense>,
+    errorElement:<Error/>,
 }
 ],
 },

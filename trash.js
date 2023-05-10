@@ -52,7 +52,44 @@
 // console.log(module);
 
 
-const a={a1:3,a2:"gfg",a3:676}
-const b=Object.values(a);
-console.log(b);
 
+//Accordion ButtonLogic
+import React from "react";
+import {useState} from "react";
+
+const About1=({visibility,setVisibility})=>{
+    
+
+    return <h1 className="border-4 border-indigo-500/100">{visibility ? <button onClick={()=>{setVisibility({about1:false,about2:false,about3:false})}}  className="bg-yellow-500">Hide</button> : <button onClick={()=>{setVisibility({about1:true,about2:false,about3:false})}} className="bg-yellow-500">Show</button> } {visibility && <p>Para - 1 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> }</h1>
+}
+
+const About2=({visibility,setVisibility})=>{
+    
+
+    return <h1 className="border-4 border-indigo-500/100">{visibility ? <button onClick={()=>{setVisibility({about1:false,about2:false,about3:false})}} className="bg-yellow-500">Hide</button> : <button onClick={()=>{setVisibility({about1:false,about2:true,about3:false})}} className="bg-yellow-500">Show</button> } {visibility && <p>Para - 1 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> }</h1>
+}
+
+const About3=({visibility,setVisibility})=>{
+    
+
+    return <h1 className="border-4 border-indigo-500/100">{visibility ? <button onClick={()=>{setVisibility({about1:false,about2:false,about3:false})}} className="bg-yellow-500">Hide</button> : <button onClick={()=>{setVisibility({about1:false,about2:false,about3:true})}} className="bg-yellow-500">Show</button> } {visibility && <p>Para - 1 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> }</h1>
+}
+
+
+const Testing=()=>{
+
+
+    const [visibility,setVisibility]=useState({about1:false,about2:false,about3:false});
+
+
+   
+    
+
+    return <>
+    <h1 className="font-bold ">Accordion Button Testing</h1>
+    <About1 visibility={visibility.about1} setVisibility={setVisibility}/>
+    <About2 visibility={visibility.about2} setVisibility={setVisibility}/>
+    <About3 visibility={visibility.about3} setVisibility={setVisibility}/>
+    </>
+ }
+ export default Testing;
