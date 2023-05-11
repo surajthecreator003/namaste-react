@@ -1,4 +1,5 @@
 import React from "react";
+import Userdata from "../utils/UseContext";
 
 
 class ProfileClassComponent extends React.Component{
@@ -17,8 +18,10 @@ class ProfileClassComponent extends React.Component{
     render(){
         console.log("Child Render Called");
         return <div>
+                    <h1>This is A Class Based Component</h1>
                     <h1>Name:{this.state.userInfo.name}</h1>
                     <img src={this.state.userInfo.avatar_url} />
+                    <Userdata.Consumer>{(value)=>(<h1>{value.name}{value.title}</h1>)}</Userdata.Consumer>
                        
         </div>;
 

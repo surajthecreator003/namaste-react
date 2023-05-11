@@ -1,5 +1,8 @@
 import React from "react";
 import {useState} from "react";
+import {useContext} from "react";
+import Userdata from "../utils/UseContext";
+
 
 //Implemented basic Accordion Button and Updated Accordion Logic from basic Accordion to Controlled Accordion 
 const About1=({visibility,setVisibility})=>{
@@ -22,6 +25,7 @@ const About3=({visibility,setVisibility})=>{
 
 
 const Testing=()=>{
+    // const a=useContext(Userdata);
 
 
     const [visibility,setVisibility]=useState("");
@@ -31,7 +35,6 @@ const Testing=()=>{
     <About1 visibility={visibility} setVisibility={setVisibility}/>
     <About2 visibility={visibility} setVisibility={setVisibility}/>
     <About3 visibility={visibility} setVisibility={setVisibility}/>
-    
     </>
  }
  export default Testing;

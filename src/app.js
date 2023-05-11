@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import {createBrowserRouter,} from "react-router-dom";
 import {RouterProvider,} from "react-router-dom";
 import {Outlet} from "react-router-dom";
+import {useContext} from "react";
 
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -12,11 +13,12 @@ import Footer from "./components/Footer";
 import RestaurantsMenu from "./components/RestaurantsMenu";
 import Cart from "./components/Cart";
 import ProfileFunctionalComponent from "./components/ProfileFunctionalComponent";
+import ProfileClassComponent from "./components/ProfileClassComponent";
 import {lazy} from "react";
 import {Suspense} from "react";
 import Shimmer from "./components/ShimmerUI";
 import Testing from "./components/Testing";
-
+import Userdata from "./utils/UseContext";
 
 
 
@@ -32,11 +34,13 @@ const stylecard={color:"#f0f0f0",};
 const Applayout=()=>{// TOP LEVEL COMPONENT
    
     return (
-    <div  className="app">
+    
+        <Userdata.Provider value={{name:"Suraj",title:"Mallick ©️"}}>
         <Header/>
         <Outlet/>
         <Footer/>
-    </div>//APP LEVEL DIV 
+        </Userdata.Provider>
+    
 
 )
     }
@@ -52,7 +56,7 @@ const approuter=createBrowserRouter([
             errorElement:<Error/>,
             children:[{
                 path:"profile",
-                element:<ProfileFunctionalComponent />,
+                element:<ProfileClassComponent />,
                 errorElement:<Error/>,
             },
             ]
@@ -80,16 +84,11 @@ const approuter=createBrowserRouter([
             errorElement: <Error/> ,
 },
 {       
-    path:"/testing",
-    element:<Suspense fallback={<Shimmer />}><Testing/></Suspense>,
-    errorElement:<Error/>,
+            path:"/testing",
+            element:<Suspense fallback={<Shimmer />}><Testing/></Suspense>,
+            errorElement:<Error/>,
 }
 ],
-},
-{       
-        path:"/about",
-        element:<Suspense fallback={<Shimmer />}><About/></Suspense>,
-        errorElement:<Error/>,
 },
 ]
 );   

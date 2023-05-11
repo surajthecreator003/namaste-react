@@ -1,7 +1,9 @@
 import React from "react";
-// import {Outlet} from "react-router-dom";
+import {Outlet} from "react-router-dom";
 import ProfileClassComponent from "./ProfileClassComponent";
 import ProfileFunctionalComponent from "./ProfileFunctionalComponent";
+import {Link} from "react-router-dom";
+
 
 // const About=()=>{
 //     return (<div><h1>About What huh</h1>
@@ -23,10 +25,11 @@ class About extends React.Component{
     console.log("PARENT render Called");
 
     return(<div><h1>About Me You Wanna Know Huh</h1>
-           <ProfileClassComponent />
-           
-           <button onClick={()=>{this.setState({count:this.state.count+1})}}>Click Me</button>
-           <p>Count:{this.state.count}</p>
+           <Outlet />
+           <Link to="profile"><button className="bg-yellow-400 font-bold">Click To Load Profile Picture </button></Link>
+           <br></br>
+           <button onClick={()=>{this.setState({count:this.state.count+1})}} className="text-bold bg-lime-300">Like Button</button>
+           <p>Total Likes :{this.state.count}</p>
     </div>)
  }
 
