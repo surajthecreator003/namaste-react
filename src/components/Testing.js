@@ -27,14 +27,22 @@ const About3=({visibility,setVisibility})=>{
 const Testing=()=>{
     // const a=useContext(Userdata);
 
-
+    const [inputText,setInputText]=useState("");
     const [visibility,setVisibility]=useState("");
+    const a=useContext(Userdata);
+    console.log(a);
 
     return <>
-    <h1 className="font-bold ">Accordion Button Testing</h1>
+    <h1 className="font-bold ">Accordion Button Testing:</h1>
     <About1 visibility={visibility} setVisibility={setVisibility}/>
     <About2 visibility={visibility} setVisibility={setVisibility}/>
     <About3 visibility={visibility} setVisibility={setVisibility}/>
+    <br></br><br></br>
+    <p className="font-bold">Context Testing:</p>
+    <p>Put some value here to change footer and Test how Context API Works:</p>
+    <input className="border-indigo-500/100 border-2" type="text" placeholder="put what you want to change" name="inputvar" value={inputText} onChange={(e)=>{setInputText(e.target.value);a.setDataValues({title:e.target.value})}}></input>
+    <br></br>
+    <br></br>
     </>
  }
  export default Testing;

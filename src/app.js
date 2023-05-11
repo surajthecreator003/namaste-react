@@ -4,6 +4,7 @@ import {createBrowserRouter,} from "react-router-dom";
 import {RouterProvider,} from "react-router-dom";
 import {Outlet} from "react-router-dom";
 import {useContext} from "react";
+import{useState} from "react";
 
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -32,10 +33,12 @@ const stylecard={color:"#f0f0f0",};
 
 
 const Applayout=()=>{// TOP LEVEL COMPONENT
+
+    const[datavalues,setDataValues]=useState({name:"Suraj",title:"Mallick ©️"})
    
     return (
     
-        <Userdata.Provider value={{name:"Suraj",title:"Mallick ©️"}}>
+        <Userdata.Provider value={{name:datavalues.name,title:datavalues.title,setDataValues:setDataValues}}>
         <Header/>
         <Outlet/>
         <Footer/>
