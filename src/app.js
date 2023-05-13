@@ -9,7 +9,7 @@ import{useState} from "react";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Error from "./components/Error";
-import Contact from "./components/Contact";
+import Checkout from "./components/Checkout";
 import Footer from "./components/Footer";
 import RestaurantsMenu from "./components/RestaurantsMenu";
 import Cart from "./components/Cart";
@@ -20,6 +20,8 @@ import {Suspense} from "react";
 import Shimmer from "./components/ShimmerUI";
 import Testing from "./components/Testing";
 import Userdata from "./utils/UseContext";
+import  {Provider} from "react-redux";
+import store from "./utils/store";
 
 
 
@@ -27,7 +29,9 @@ const root=ReactDOM.createRoot(document.getElementById("root"));
 
 const InstaMart=lazy(()=>{return import("./components/InstaMart")});
 
-const About=lazy(()=>{return import("./components/About")})
+const About=lazy(()=>{return import("./components/About")});
+
+
 
 const stylecard={color:"#f0f0f0",};
 
@@ -37,13 +41,13 @@ const Applayout=()=>{// TOP LEVEL COMPONENT
     const[datavalues,setDataValues]=useState({name:"Suraj",title:"Mallick ©️"})
    
     return (
-    
+    <Provider store={store}>
         <Userdata.Provider value={{name:datavalues.name,title:datavalues.title,setDataValues:setDataValues}}>
         <Header/>
         <Outlet/>
         <Footer/>
         </Userdata.Provider>
-    
+    </Provider>
 
 )
     }
@@ -64,8 +68,8 @@ const approuter=createBrowserRouter([
             },
             ]
     },{
-            path:"/contact",
-            element:<Contact />,
+            path:"/Checkout",
+            element:<Checkout />,
             errorElement:<Error/>,
 },{
             path:"/",

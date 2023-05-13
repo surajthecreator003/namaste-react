@@ -24,11 +24,14 @@ class About extends React.Component{
  render(){
     console.log("PARENT render Called");
 
-    return(<div><h1>About Me You Wanna Know Huh</h1>
+    return(<div>
+            <h1>About Me You Wanna Know Huh</h1>
+            <h1>My Phone Number-<span className="font-bold">8249300520</span></h1>
+            <h1 className="font-bold">Email:surajhustlermallick@gmail.com</h1>
            <Outlet />
-           <Link to="profile"><button className="bg-yellow-400 font-bold">Click To Load Profile Picture </button></Link>
+           <Link to="profile"><button className="bg-yellow-400 font-bold border-2 border-yellow-800">Click To Load Profile Picture </button></Link>
            <br></br>
-           <button onClick={()=>{this.setState({count:this.state.count+1})}} className="text-bold bg-lime-300">Like Button</button>
+           <button onClick={()=>{this.setState({count:this.state.count+1})}} className="text-bold bg-lime-300 border-2 border-green-600 font-bold">Like Button</button>
            <p>Total Likes :{this.state.count}</p>
     </div>)
  }
