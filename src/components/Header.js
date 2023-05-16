@@ -12,7 +12,7 @@ import {useSelector} from "react-redux";
 const Title=()=>{
     return( 
     <a href ="/" className="logocontainer">
-                <img className="h-28 pt-2 ml-0" alt="logo" src={LOGO_URL} />
+                <img className="h-28 pt-2 ml-0" alt="logo" src={LOGO_URL} data-testid="logo" />
             </a>
             )
     
@@ -35,7 +35,7 @@ const Header=()=>{
     console.log(cartItems);
 
     return(
-        <div className="flex justify-between bg-blue-50 shadow-lg">
+        <div className="flex justify-between bg-blue-50 shadow-lg" >
 
             <Title />
             

@@ -1,5 +1,5 @@
-
 /.parcel-cache
+/coverage
 /dist 
 /node_modules
 /trash.js
