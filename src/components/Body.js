@@ -137,6 +137,7 @@ return (filteredRestaurants.length===0)?(<Shimmer />):(
             
             <div>
             <input
+              data-testid="input-box"
               type="text"
               className="focus:bg-green-200 p-2 m-2 border border-indigo-600"
               placeholder="Search"
@@ -147,7 +148,7 @@ return (filteredRestaurants.length===0)?(<Shimmer />):(
             />
 
 
-            <button className="p-2 m-2 bg-purple-400 rounded-full hover:bg-green-500" onClick={()=>{//serch Logic Inside Button Working
+            <button data-testid="search-btn" className="p-2 m-2 bg-purple-400 rounded-full hover:bg-green-500" onClick={()=>{//serch Logic Inside Button Working
               // const data=filterData(searchText,listOfRestaurants);//If you wanaa use outer function to filter data
               const data=allRestaurants.filter((x)=>{return x.data.name.toLowerCase().includes(searchText.toLowerCase())})
               setFilteredRestaurants(data);

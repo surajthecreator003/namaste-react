@@ -8,7 +8,7 @@ const RestaurantCard=(props)=>{
     const{cloudinaryImageId,name,avgRating,cuisines,costForTwo,deliveryTime}=resdata?.data;
     
     return(
-        <div className="w-56 p-2 m-2 shadow-lg bg-purple-50" >
+        <div data-testid="rescards" className="w-56 p-2 m-2 shadow-lg bg-purple-50" >
            
            <img  className="restaurantlogo" src={CDN_URL+ cloudinaryImageId} />
            <h3 className="font-bold text-2xl">{name}</h3>
